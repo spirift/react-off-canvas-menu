@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
 
-import OffCanvas from './OffCanvas'
+import OffCanvas from './index'
 
 const styleTestHelper = (menuWidth, zIndex, defaults) => {
   it(`with transform: translate to move it off canvas`, () => {
