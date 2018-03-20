@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OffCanvas Component render method should return a div with some touch handlers and an <aside> wrapper 1`] = `
+<div
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+>
+  <p>
+    a child
+  </p>
+  <aside
+    style={
+      Object {
+        "bottom": "0",
+        "left": "0",
+        "minHeight": "100vh",
+        "overflowY": "auto",
+        "position": "fixed",
+        "top": "0",
+        "transform": "translate(-170px, 0)",
+        "transition": "transform .1s",
+        "width": 170,
+        "zIndex": 2000,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`OffCanvas Component render method should return some Content if the prop is passed 1`] = `
+<div
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+>
+  <p>
+    a child
+  </p>
+  <aside
+    style={
+      Object {
+        "bottom": "0",
+        "left": "0",
+        "minHeight": "100vh",
+        "overflowY": "auto",
+        "position": "fixed",
+        "top": "0",
+        "transform": "translate(-170px, 0)",
+        "transition": "transform .1s",
+        "width": 170,
+        "zIndex": 2000,
+      }
+    }
+  >
+    <div>
+      this could be a menu
+    </div>
+  </aside>
+</div>
+`;
