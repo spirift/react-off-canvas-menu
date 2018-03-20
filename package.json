@@ -1,5 +1,5 @@
 {
-  "name": "react-off-canvas",
+  "name": "react-off-canvas-menu",
   "version": "0.0.1",
   "description": "An off canvas slide out section for react apps",
   "main": "build/index.js",
