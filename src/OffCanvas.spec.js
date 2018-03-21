@@ -103,6 +103,17 @@ describe(`OffCanvas Component`, () => {
     })
   })
 
+  describe(`componentDidMount method`, () => {
+    it(`should open the menu if forceOpenState is true`, () => {
+      const wrapper = mount(<OffCanvas forceOpenState={true} />)
+      const inst = wrapper.instance()
+      inst.openMenu = jest.fn()
+      inst.componentDidMount()
+
+      expect(inst.openMenu).toHaveBeenCalled()
+    })
+  })
+
   describe(`componentWillReceiveProps method`, () => {
     describe(`might call this.openMenu`, () => {
       it(`when newProps.forceOpenState is true, was not true in prevProps (props) and the state doesn't think the menu is open, this.openMenu should be called`, () => {

@@ -22,6 +22,13 @@ class OffCanvas extends Component {
     this.trackMenuPosition = this.trackMenuPosition.bind(this)
   }
 
+  componentDidMount() {
+    console.log(`this.props.forceOpenState: `, this.props.forceOpenState)
+    if(this.props.forceOpenState) {
+      this.openMenu()
+    }
+  }
+
   componentWillReceiveProps(newProps) {
     if (
       newProps.forceOpenState === true &&
