@@ -1,6 +1,6 @@
 {
   "name": "react-off-canvas-menu",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An off canvas slide out section for React apps",
   "main": "./index.js",
   "peerDependencies": {
@@ -11,7 +11,8 @@
   "scripts": {
     "test": "jest && codecov",
     "start": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "prepack": "npm run build"
   },
   "author": {
     "name": "Digital Corax",
