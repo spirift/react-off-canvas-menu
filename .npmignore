@@ -1,0 +1,6 @@
+.eslintrc
+*.yml
+coverage
+node_modules
+src
+travis.yml
