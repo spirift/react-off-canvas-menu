@@ -8,18 +8,18 @@
     "react-dom": ">=0.14.0 <17.0.0"
   },
   "dependencies": {
+    "react": "^16.2.0",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "webpack --watch",
     "build": "webpack"
   },
   "author": "Michael Burson",
   "license": "ISC",
   "devDependencies": {
-    "react": "^16.2.0",
     "babel-jest": "^23.0.0-alpha.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
