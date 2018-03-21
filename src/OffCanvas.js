@@ -13,7 +13,7 @@ class OffCanvas extends Component {
     }
     this.sideGrabWidth = props.sideGrabWidth || 40
     this.tollerance = props.tollerance || 70
-    this.menuWidth = props.menuWidth || 170
+    this.defaultMenuWidth = 170
     this.touchStartHandler = this.touchStartHandler.bind(this)
     this.touchEndHandler = this.touchEndHandler.bind(this)
     this.touchMoveHandler = this.touchMoveHandler.bind(this)
@@ -86,7 +86,7 @@ class OffCanvas extends Component {
     this.setState({
       startMove: null,
       lastMove: null,
-      xOffset: this.menuWidth,
+      xOffset: this.props.menuWidth || this.defaultMenuWidth,
       isMenuOpen: true,
     })
   }
@@ -105,9 +105,10 @@ class OffCanvas extends Component {
 
   trackMenuPosition(touchX) {
     const { startMove, isMenuOpen } = this.state
-    const stopPoint = isMenuOpen ? this.menuWidth : 0
+    const menuWidth = this.props.menuWidth || this.defaultMenuWidth
+    const stopPoint = isMenuOpen ? menuWidth : 0
     const positon = stopPoint + touchX - startMove
-    const xOffset = positon >= this.menuWidth ? this.menuWidth : positon
+    const xOffset = positon >= menuWidth ? menuWidth : positon
 
     this.setState({
       lastMove: touchX,
@@ -118,7 +119,8 @@ class OffCanvas extends Component {
   render() {
     const { children, Content, zIndex = 2000 } = this.props
     const { xOffset } = this.state
-    const translateX = -this.menuWidth + xOffset
+    const menuWidth = this.props.menuWidth || this.defaultMenuWidth
+    const translateX = -menuWidth + xOffset
 
     return (
       <div onTouchStart={this.touchStartHandler} onTouchMove={this.touchMoveHandler} onTouchEnd={this.touchEndHandler}>
@@ -134,7 +136,7 @@ class OffCanvas extends Component {
             overflowY: 'auto',
             zIndex: zIndex,
             left: '0',
-            width: this.menuWidth,
+            width: menuWidth,
           }}
         >
           {Content}

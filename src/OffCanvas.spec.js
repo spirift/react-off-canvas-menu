@@ -70,7 +70,7 @@ describe(`OffCanvas Component`, () => {
 
     constructorTestHelper('tollerance', 70)
 
-    constructorTestHelper('menuWidth', 170)
+    constructorTestHelper('defaultMenuWidth', 170)
   })
 
   describe(`render method`, () => {
