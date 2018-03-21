@@ -4,10 +4,10 @@
   "description": "An off canvas slide out section for react apps",
   "main": "build/index.js",
   "peerDependencies": {
-    "react": "^15.5.4"
+    "react": ">=0.14.0 <17.0.0",
+    "react-dom": ">=0.14.0 <17.0.0"
   },
   "dependencies": {
-    "react": "^16.2.0",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12"
   },
