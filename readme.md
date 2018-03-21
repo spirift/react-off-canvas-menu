@@ -1,5 +1,8 @@
 # React Off Canvas Menu
 
+[![Build Status](https://travis-ci.org/spirift/react-off-canvas-menu.png?branch=master)](https://travis-ci.org/spirift/react-off-canvas-menu)
+[![codecov](https://codecov.io/gh/spirift/react-off-canvas-menu/branch/master/graph/badge.svg)](https://codecov.io/gh/spirift/react-off-canvas-menu)
+
 React Off Canvas Menu is a React component that produces an off canvas area that can slide on and off the screen. It is draggable on touch from the left and can also be controlled with buttons. It also emits state change for easy interaction with state controllers like redux.
 
 ## Installing
