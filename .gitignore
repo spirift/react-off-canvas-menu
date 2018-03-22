@@ -4,6 +4,6 @@
 node_modules
 coverage
 build
-index.js
+/index.js
 
 package-lock.json
