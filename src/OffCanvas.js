@@ -23,7 +23,7 @@ class OffCanvas extends Component {
   }
 
   componentDidMount() {
-    if(this.props.forceOpenState) {
+    if (this.props.forceOpenState) {
       this.openMenu()
     }
   }
@@ -41,6 +41,16 @@ class OffCanvas extends Component {
       this.state.isMenuOpen === true
     ) {
       this.closeMenu()
+    }
+
+    if (
+      this.props.menuWidth !== newProps.menuWidth &&
+      this.state.isMenuOpen === true &&
+      newProps.forceOpenState === true
+    ) {
+      this.setState({
+        xOffset: newProps.menuWidth,
+      })
     }
   }
 

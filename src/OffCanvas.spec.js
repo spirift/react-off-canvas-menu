@@ -195,6 +195,17 @@ describe(`OffCanvas Component`, () => {
         expect(inst.closeMenu).not.toHaveBeenCalled()
       })
     })
+
+    describe(`should update the xCoord when the this.props.menuWidth changes when the menu is open`, () => {
+      const wrapper = mount(<OffCanvas />)
+      wrapper.setState({ isMenuOpen: true })
+      wrapper.setProps({ menuWidth: 475, forceOpenState: true })
+      const inst = wrapper.instance()
+      inst.closeMenu = jest.fn()
+
+      inst.componentWillReceiveProps({ forceOpenState: true })
+      expect(inst.closeMenu).not.toHaveBeenCalled()
+    })
   })
 
   describe(`touchStartHandler method`, () => {
