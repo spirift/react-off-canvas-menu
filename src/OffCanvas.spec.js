@@ -196,15 +196,40 @@ describe(`OffCanvas Component`, () => {
       })
     })
 
-    describe(`should update the xCoord when the this.props.menuWidth changes when the menu is open`, () => {
-      const wrapper = mount(<OffCanvas />)
-      wrapper.setState({ isMenuOpen: true })
-      wrapper.setProps({ menuWidth: 475, forceOpenState: true })
-      const inst = wrapper.instance()
-      inst.closeMenu = jest.fn()
+    describe(`update the xCoord`, () => {
+      it(`should setState with xCoord when the this.props.menuWidth changes and the menu is being forced open by a controller or parent`, () => {
+        const wrapper = mount(<OffCanvas menuWidth={500} />)
+        wrapper.setState({ isMenuOpen: true }) // This stops other parts of the method running
+        const inst = wrapper.instance()
+        inst.setState = jest.fn()
+        const newWidth = 400
 
-      inst.componentWillReceiveProps({ forceOpenState: true })
-      expect(inst.closeMenu).not.toHaveBeenCalled()
+        inst.componentWillReceiveProps({ menuWidth: newWidth, forceOpenState: true })
+        expect(inst.setState).toHaveBeenCalledWith({
+          xOffset: newWidth,
+        })
+      })
+
+      it(`should not setState if the menuWidth is different but forceOpenState is false`, () => {
+        const wrapper = mount(<OffCanvas menuWidth={500} forceOpenState={false} />)
+        wrapper.setState({ isMenuOpen: true }) // This stops other parts of the method running
+        const inst = wrapper.instance()
+        inst.setState = jest.fn()
+        const newWidth = 400
+
+        inst.componentWillReceiveProps({ menuWidth: newWidth, forceOpenState: false })
+        expect(inst.setState).not.toHaveBeenCalled()
+      })
+
+      it(`should not setState if forceOpenState is true but the menuWidth is the same`, () => {
+        const wrapper = mount(<OffCanvas menuWidth={500} forceOpenState={false} />)
+        wrapper.setState({ isMenuOpen: true }) // This stops other parts of the method running
+        const inst = wrapper.instance()
+        inst.setState = jest.fn()
+
+        inst.componentWillReceiveProps({ menuWidth: 500, forceOpenState: true })
+        expect(inst.setState).not.toHaveBeenCalled()
+      })
     })
   })
 
@@ -394,7 +419,17 @@ describe(`OffCanvas Component`, () => {
       inst.setState = jest.fn()
       inst.openMenu()
 
-      expect(inst.setState).toHaveBeenCalledWith({ isMenuOpen: true, lastMove: null, startMove: null, xOffset: 170 })
+      expect(inst.setState).toHaveBeenCalledWith({ isMenuOpen: true, lastMove: null, startMove: null, xOffset: 170 }, expect.any(Function))
+    })
+
+    it(`should call funcNullCheck with this.props.emitOpened`, () => {
+      const emitOpened = jest.fn()
+      const wrapper = shallow(<OffCanvas emitOpened={emitOpened} />)
+      const inst = wrapper.instance()
+      inst.funcNullCheck = jest.fn()
+      inst.openMenu()
+
+      expect(inst.funcNullCheck).toHaveBeenCalledWith(inst.props.emitOpened)
     })
   })
 
@@ -414,7 +449,17 @@ describe(`OffCanvas Component`, () => {
       inst.setState = jest.fn()
       inst.closeMenu()
 
-      expect(inst.setState).toHaveBeenCalledWith({ isMenuOpen: false, lastMove: null, startMove: null, xOffset: 0 })
+      expect(inst.setState).toHaveBeenCalledWith({ isMenuOpen: false, lastMove: null, startMove: null, xOffset: 0 }, expect.any(Function))
+    })
+
+    it(`should call funcNullCheck with this.props.emitClosed`, () => {
+      const emitClosed = jest.fn()
+      const wrapper = shallow(<OffCanvas emitClosed={emitClosed} />)
+      const inst = wrapper.instance()
+      inst.funcNullCheck = jest.fn()
+      inst.closeMenu()
+
+      expect(inst.funcNullCheck).toHaveBeenCalledWith(inst.props.emitClosed)
     })
   })
 
@@ -465,6 +510,27 @@ describe(`OffCanvas Component`, () => {
 
         expect(inst.setState).toHaveBeenCalledWith({ lastMove: touchX, xOffset: touchX })
       })
+    })
+  })
+
+  describe(`funcNullCheck method`, () => {
+    it(`should not call it's first arg as a function if it does not exist`, () => {
+
+      const wrapper = shallow(<OffCanvas />)
+      const inst = wrapper.instance()
+      const func = jest.fn()
+
+      inst.funcNullCheck()
+      expect(func).not.toHaveBeenCalled();
+    })
+
+    it(`should call it's first arg as a function when it exists`, () => {
+      const wrapper = shallow(<OffCanvas />)
+      const inst = wrapper.instance()
+      const func = jest.fn()
+
+      inst.funcNullCheck(func)
+      expect(func).toHaveBeenCalled();
     })
   })
 })

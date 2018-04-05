@@ -20,6 +20,7 @@ class OffCanvas extends Component {
     this.openMenu = this.openMenu.bind(this)
     this.closeMenu = this.closeMenu.bind(this)
     this.trackMenuPosition = this.trackMenuPosition.bind(this)
+    this.funcNullCheck = this.funcNullCheck.bind(this)
   }
 
   componentDidMount() {
@@ -45,7 +46,6 @@ class OffCanvas extends Component {
 
     if (
       this.props.menuWidth !== newProps.menuWidth &&
-      this.state.isMenuOpen === true &&
       newProps.forceOpenState === true
     ) {
       this.setState({
@@ -89,28 +89,28 @@ class OffCanvas extends Component {
     }
   }
 
-  openMenu() {
-    if (this.props.emitOpened) {
-      this.props.emitOpened()
+  funcNullCheck(fn) {
+    if (fn) {
+      fn()
     }
+  }
+
+  openMenu() {
     this.setState({
       startMove: null,
       lastMove: null,
       xOffset: this.props.menuWidth || this.defaultMenuWidth,
       isMenuOpen: true,
-    })
+    }, () => this.funcNullCheck(this.props.emitOpened))
   }
 
   closeMenu() {
-    if (this.props.emitClosed) {
-      this.props.emitClosed()
-    }
     this.setState({
       startMove: null,
       lastMove: null,
       xOffset: 0,
       isMenuOpen: false,
-    })
+    }, () => this.funcNullCheck(this.props.emitClosed))
   }
 
   trackMenuPosition(touchX) {
