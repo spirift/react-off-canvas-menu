@@ -1,6 +1,6 @@
 {
   "name": "react-off-canvas-menu",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An off canvas slide out section for React apps",
   "main": "./index.js",
   "peerDependencies": {
