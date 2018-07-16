@@ -3,4 +3,7 @@
 coverage
 node_modules
 src
+demo
+
 travis.yml
+index.html
