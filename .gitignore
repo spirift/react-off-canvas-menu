@@ -3,7 +3,6 @@
 
 node_modules
 coverage
-build
-/index.js
+dist
 
 package-lock.json
