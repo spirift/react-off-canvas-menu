@@ -14,7 +14,8 @@
     "transpile": "npm run clean && npx babel src --out-dir dist --ignore spec.js,test.js",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run transpile",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "deploy": "npm run test && npm run build"
   },
   "author": {
     "name": "Digital Corax",
