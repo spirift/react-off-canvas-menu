@@ -13,7 +13,8 @@
     "start": "webpack-dev-server --mode development",
     "transpile": "npm run clean && npx babel src --out-dir dist --ignore spec.js,test.js",
     "clean": "rimraf dist",
-    "prepublishOnly": "npm run transpile"
+    "prepublishOnly": "npm run transpile",
+    "build": "webpack --mode production"
   },
   "author": {
     "name": "Digital Corax",
