@@ -476,7 +476,6 @@ describe(`OffCanvas Component`, () => {
         expect(inst.setState).toHaveBeenCalledWith({ lastMove: 0, xOffset: menuWidth })
       })
       it(`should be zero if the menu is closed and touchX and startMove are zero`, () => {
-        const menuWidth = 170
         const wrapper = shallow(<OffCanvas />)
         wrapper.setState({ isMenuOpen: false, startMove: 0 })
         const inst = wrapper.instance()
@@ -500,7 +499,6 @@ describe(`OffCanvas Component`, () => {
       })
 
       it(`should be set to position if the position is < menuWidth when the menu is closed`, () => {
-        const menuWidth = 170
         const touchX = 100
         const wrapper = shallow(<OffCanvas />)
         wrapper.setState({ isMenuOpen: false, startMove: 0 })
@@ -521,7 +519,7 @@ describe(`OffCanvas Component`, () => {
       const func = jest.fn()
 
       inst.funcNullCheck()
-      expect(func).not.toHaveBeenCalled();
+      expect(func).not.toHaveBeenCalled()
     })
 
     it(`should call it's first arg as a function when it exists`, () => {
@@ -530,7 +528,7 @@ describe(`OffCanvas Component`, () => {
       const func = jest.fn()
 
       inst.funcNullCheck(func)
-      expect(func).toHaveBeenCalled();
+      expect(func).toHaveBeenCalled()
     })
   })
 })

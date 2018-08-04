@@ -29,7 +29,7 @@ class OffCanvas extends Component {
     }
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (
       newProps.forceOpenState === true &&
       newProps.forceOpenState !== this.props.forceOpenState &&
