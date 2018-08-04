@@ -1,4 +1,17 @@
 .menu {
   background: #f9f9f9;
   height: 100%;
+  padding: 10px;
+}
+.button {
+  padding: 5px 10px;
+  background: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.button:hover {
+  background: #ddd;
 }

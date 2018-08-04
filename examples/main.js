@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import OffCanvas from '../src'
-import './styles.css';
+import './styles.css'
 
 class App extends Component {
   constructor() {
@@ -21,25 +21,35 @@ class App extends Component {
   }
 
   render() {
-
     return (
-      <OffCanvas Content={<div className="menu">
-        This is the off canvas section
-        <div>
-          <button onClick={this.handleClick}>Close the menu</button>
-        </div>
-      </div>} forceOpenState={this.state.open}>
-      <main>This is your main app
-        <div>
-          <button onClick={this.handleClick}>Open the menu</button>
-        </div>
-      </main>
+      <OffCanvas
+        Content={
+          <div className="menu">
+            <p>This is the off canvas section</p>
+            <p>
+              <button
+                type="button"
+                onClick={this.handleClick}
+                className="button"
+              >
+                Close the menu
+              </button>
+            </p>
+          </div>
+        }
+        forceOpenState={this.state.open}
+      >
+        <main>
+          <p>This is your main app</p>
+          <p>
+            <button type="button" onClick={this.handleClick} className="button">
+              Open the menu
+            </button>
+          </p>
+        </main>
       </OffCanvas>
     )
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))
