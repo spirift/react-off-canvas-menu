@@ -114,14 +114,14 @@ describe(`OffCanvas Component`, () => {
     })
   })
 
-  describe(`componentWillReceiveProps method`, () => {
+  describe(`UNSAFE_componentWillReceiveProps method`, () => {
     describe(`might call this.openMenu`, () => {
       it(`when newProps.forceOpenState is true, was not true in prevProps (props) and the state doesn't think the menu is open, this.openMenu should be called`, () => {
         const wrapper = mount(<OffCanvas />)
         const inst = wrapper.instance()
         inst.openMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: true })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: true })
         expect(inst.openMenu).toHaveBeenCalled()
       })
 
@@ -130,7 +130,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.openMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: false })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: false })
         expect(inst.openMenu).not.toHaveBeenCalled()
       })
 
@@ -140,7 +140,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.openMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: true })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: true })
         expect(inst.openMenu).not.toHaveBeenCalled()
       })
 
@@ -150,7 +150,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.openMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: true })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: true })
         expect(inst.openMenu).not.toHaveBeenCalled()
       })
     })
@@ -162,7 +162,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.closeMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: false })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: false })
         expect(inst.closeMenu).toHaveBeenCalled()
       })
 
@@ -171,7 +171,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.closeMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: true })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: true })
         expect(inst.closeMenu).not.toHaveBeenCalled()
       })
 
@@ -181,7 +181,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.closeMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: false })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: false })
         expect(inst.closeMenu).not.toHaveBeenCalled()
       })
 
@@ -191,7 +191,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.closeMenu = jest.fn()
 
-        inst.componentWillReceiveProps({ forceOpenState: true })
+        inst.UNSAFE_componentWillReceiveProps({ forceOpenState: true })
         expect(inst.closeMenu).not.toHaveBeenCalled()
       })
     })
@@ -204,7 +204,7 @@ describe(`OffCanvas Component`, () => {
         inst.setState = jest.fn()
         const newWidth = 400
 
-        inst.componentWillReceiveProps({ menuWidth: newWidth, forceOpenState: true })
+        inst.UNSAFE_componentWillReceiveProps({ menuWidth: newWidth, forceOpenState: true })
         expect(inst.setState).toHaveBeenCalledWith({
           xOffset: newWidth,
         })
@@ -217,7 +217,7 @@ describe(`OffCanvas Component`, () => {
         inst.setState = jest.fn()
         const newWidth = 400
 
-        inst.componentWillReceiveProps({ menuWidth: newWidth, forceOpenState: false })
+        inst.UNSAFE_componentWillReceiveProps({ menuWidth: newWidth, forceOpenState: false })
         expect(inst.setState).not.toHaveBeenCalled()
       })
 
@@ -227,7 +227,7 @@ describe(`OffCanvas Component`, () => {
         const inst = wrapper.instance()
         inst.setState = jest.fn()
 
-        inst.componentWillReceiveProps({ menuWidth: 500, forceOpenState: true })
+        inst.UNSAFE_componentWillReceiveProps({ menuWidth: 500, forceOpenState: true })
         expect(inst.setState).not.toHaveBeenCalled()
       })
     })

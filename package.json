@@ -13,7 +13,7 @@
     "start": "webpack-dev-server --mode development",
     "transpile": "npm run clean && npx babel src --out-dir dist --ignore spec.js,test.js",
     "clean": "rimraf dist",
-    "prepublishOnly": "npm run transpile",
+    "prepublishOnly": "jest && npm run transpile",
     "build": "webpack --mode production",
     "deploy": "npm run test && npm run build",
     "lint": "./node_modules/.bin/eslint ./src/**/*.js",
@@ -59,7 +59,8 @@
       "<rootDir>/setupFile.js"
     ],
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "testURL": "http://localhost"
   },
   "homepage": "https://github.com/spirift/react-off-canvas-menu",
   "keywords": [
